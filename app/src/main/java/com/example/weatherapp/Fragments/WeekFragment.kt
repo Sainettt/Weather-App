@@ -37,25 +37,25 @@ class WeekFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fun randomInfoOfDay():OneDayInfo {
-            val nameDay = listOfDays.random()
-            val stateWeather = R.drawable.ic_cloudy_sunny
-            val minTemperature = Random.nextInt(0, 10)
-            val maxTemperature = Random.nextInt(10, 20)
-
-            val day = OneDayInfo(nameDay, stateWeather, minTemperature, maxTemperature)
-            return day
-        }
-        fun generateListOfDays(): MutableList<OneDayInfo>{
-            val week = mutableListOf<OneDayInfo>()
-            for(day in 0..6){
-                week.add(randomInfoOfDay())
-            }
-            return week
-        }
         val week = generateListOfDays()
         val adapter = WeekDaysAdapter(week)
         binding.recyclerViewWeekInfo.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewWeekInfo.adapter = adapter
+    }
+
+    fun randomInfoOfDay():OneDayInfo {
+        val nameDay = listOfDays.random()
+        val stateWeather = R.drawable.ic_cloudy_sunny
+        val minTemperature = Random.nextInt(0, 10)
+        val maxTemperature = Random.nextInt(10, 20)
+
+        val day = OneDayInfo(nameDay, stateWeather, minTemperature, maxTemperature)
+        return day
+    }
+
+    fun generateListOfDays(): MutableList<OneDayInfo>{
+        val week = mutableListOf<OneDayInfo>()
+        for(day in 0..6) week.add(randomInfoOfDay())
+        return week
     }
 }

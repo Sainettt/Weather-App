@@ -62,10 +62,12 @@
             android:layout_marginStart="55dp">
 
             <ImageView
+                android:id="@+id/ic_kmh"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/ic_cloudy"/>
             <TextView
+                android:id="@+id/kmh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/InfoOfDay"
@@ -81,10 +83,12 @@
             android:layout_marginStart="90dp">
 
             <ImageView
+                android:id="@+id/ic_humidity"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/ic_cloudy"/>
             <TextView
+                android:id="@+id/humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/InfoOfDay"
@@ -100,10 +104,12 @@
             android:layout_marginStart="90dp">
 
             <ImageView
+                android:id="@+id/ic_area_rain"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/ic_cloudy"/>
             <TextView
+                android:id="@+id/area_rain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/InfoOfDay"
