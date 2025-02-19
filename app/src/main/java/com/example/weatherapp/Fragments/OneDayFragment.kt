@@ -1,21 +1,26 @@
 package com.example.weatherapp.Fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.weatherapp.OneDayInfo
 import com.example.weatherapp.R
-import com.example.weatherapp.TodayInfo
-import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.weatherapp.databinding.FragmentOneDayInfoBinding
-import java.time.DayOfWeek
 import kotlin.random.Random
 
 class OneDayFragment: Fragment() {
+
     private lateinit var binding: FragmentOneDayInfoBinding
+    private var dayInfo: OneDayInfo? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            dayInfo = it.getParcelable("dayInfo")
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,20 +32,25 @@ class OneDayFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val day = generateInfoOneDay()
-        applySettings(day)
+
+          dayInfo?.let { applySettings(it) }
+//        val day = generateInfoOneDay()
+//        applySettings(day)
+
     }
-    fun generateInfoOneDay(): TodayInfo{
-        val stateWeather = R.drawable.ic_sunny
+
+    private fun generateInfoOneDay(): OneDayInfo{
         val nameCity = "Moscow"
+        val stateWeather = R.drawable.ic_sunny
         val temperature = Random.nextInt(30, 45)
         val kmh = Random.nextInt(10,20)
         val humidity = Random.nextInt(30,100)
         val areaRain = Random.nextInt(50,80)
 
-        return TodayInfo(stateWeather, nameCity, temperature, kmh, humidity, areaRain)
+        return OneDayInfo(nameCity,"",stateWeather,0,0,temperature,kmh,humidity,areaRain)
     }
-    fun applySettings(day: TodayInfo){
+
+    private fun applySettings(day: OneDayInfo){
         binding.stateWeather.setImageResource(day.stateWeather)
         binding.city.text = day.nameCity
         binding.temperature.text = day.temperature.toString()

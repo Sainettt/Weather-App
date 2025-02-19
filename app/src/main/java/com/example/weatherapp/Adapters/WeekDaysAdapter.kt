@@ -5,20 +5,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.Fragments.WeekFragment
+import com.example.weatherapp.Interfaces.OnDayClickListener
 import com.example.weatherapp.OneDayInfo
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentOneDayInfoBinding
 import com.example.weatherapp.databinding.LayoutOneDayBinding
 
-class WeekDaysAdapter(private var daysWeek: MutableList<OneDayInfo>): RecyclerView.Adapter<WeekDaysAdapter.WeekDayHolder>() {
+class WeekDaysAdapter(
+    private var daysWeek: MutableList<OneDayInfo>,
+    private val listener: OnDayClickListener
+): RecyclerView.Adapter<WeekDaysAdapter.WeekDayHolder>() {
 
-    class WeekDayHolder(day: View): RecyclerView.ViewHolder(day){
+    inner class WeekDayHolder(day: View): RecyclerView.ViewHolder(day){
         val binding = LayoutOneDayBinding.bind(day)
+
         fun bind (day: OneDayInfo) = with(binding){
             nameDay.text = day.nameDay
-            stateWeather.setImageResource(R.drawable.ic_cloudy_sunny)
+            stateWeather.setImageResource(day.stateWeather)
             minTemperature.text = day.minTemperature.toString()
             maxTemperature.text = day.maxTemperature.toString()
+
+            oneDayInfo.setOnClickListener{ listener.oneDayClick(day) }
         }
     }
 
