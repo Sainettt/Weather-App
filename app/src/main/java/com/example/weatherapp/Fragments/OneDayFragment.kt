@@ -54,8 +54,8 @@ class OneDayFragment: Fragment() {
         binding.stateWeather.setImageResource(day.stateWeather)
         binding.city.text = day.nameCity
         binding.temperature.text = day.temperature.toString()
-        binding.kmh.text = day.kmh.toString()
-        binding.humidity.text = day.humidity.toString()
-        binding.areaRain.text = day.areaRain.toString()
+        binding.kmh.text = day.kmh.toString() + " km/h"
+        binding.humidity.text = day.humidity.toString() + "%"
+        binding.areaRain.text = day.areaRain.toString() + "%"
     }
 }
