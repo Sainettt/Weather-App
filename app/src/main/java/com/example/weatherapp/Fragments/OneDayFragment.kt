@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.weatherapp.OneDayInfo
-import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentOneDayInfoBinding
-import kotlin.random.Random
 
 class OneDayFragment: Fragment() {
 
@@ -32,22 +30,9 @@ class OneDayFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+//        val api = WeatherApi("a", "a")
+//        api.makeRequest()
           dayInfo?.let { applySettings(it) }
-//        val day = generateInfoOneDay()
-//        applySettings(day)
-
-    }
-
-    private fun generateInfoOneDay(): OneDayInfo{
-        val nameCity = "Moscow"
-        val stateWeather = R.drawable.ic_sunny
-        val temperature = Random.nextInt(30, 45)
-        val kmh = Random.nextInt(10,20)
-        val humidity = Random.nextInt(30,100)
-        val areaRain = Random.nextInt(50,80)
-
-        return OneDayInfo(nameCity,"",stateWeather,0,0,temperature,kmh,humidity,areaRain)
     }
 
     private fun applySettings(day: OneDayInfo){

@@ -1,14 +1,13 @@
 package com.example.weatherapp.Adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weatherapp.Fragments.WeekFragment
 import com.example.weatherapp.Interfaces.OnDayClickListener
 import com.example.weatherapp.OneDayInfo
 import com.example.weatherapp.R
-import com.example.weatherapp.databinding.FragmentOneDayInfoBinding
 import com.example.weatherapp.databinding.LayoutOneDayBinding
 
 class WeekDaysAdapter(
@@ -22,8 +21,8 @@ class WeekDaysAdapter(
         fun bind (day: OneDayInfo) = with(binding){
             nameDay.text = day.nameDay
             stateWeather.setImageResource(day.stateWeather)
-            minTemperature.text = day.minTemperature.toString()
-            maxTemperature.text = day.maxTemperature.toString()
+            minTemperature.text = itemView.context.getString(R.string.temp_format, day.minTemperature)
+            maxTemperature.text = itemView.context.getString(R.string.temp_format, day.maxTemperature)
 
             oneDayInfo.setOnClickListener{ listener.oneDayClick(day) }
         }
@@ -39,4 +38,10 @@ class WeekDaysAdapter(
     override fun onBindViewHolder(holder: WeekDayHolder, position: Int) {
         holder.bind(daysWeek[position])
     }
+    fun updateData(newData: MutableList<OneDayInfo>) {
+        daysWeek.clear() // Очистка текущих данных
+        daysWeek.addAll(newData) // Добавление новых данных
+        notifyDataSetChanged() // Оповещение адаптера о том, что данные изменились
+    }
+
 }
