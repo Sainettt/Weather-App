@@ -1,13 +1,13 @@
 package com.example.weatherapp.API
 
-import com.example.weatherapp.OneDayInfo
+import com.example.weatherapp.Model.OneDayInfoResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface WeatherApi {
     @GET("weather") // путь на сервере
-    suspend fun getWeather(): MutableList<OneDayInfo>
+    suspend fun getWeather(): MutableList<OneDayInfoResponse>
 }
 
 object RetrofitInstance {

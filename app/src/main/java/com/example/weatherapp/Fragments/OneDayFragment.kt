@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.weatherapp.OneDayInfo
+import com.example.weatherapp.Model.OneDayInfo
 import com.example.weatherapp.databinding.FragmentOneDayInfoBinding
 
 class OneDayFragment: Fragment() {
@@ -30,8 +30,6 @@ class OneDayFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val api = WeatherApi("a", "a")
-//        api.makeRequest()
           dayInfo?.let { applySettings(it) }
     }
 

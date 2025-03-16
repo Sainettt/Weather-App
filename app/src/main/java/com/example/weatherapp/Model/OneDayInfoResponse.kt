@@ -1,13 +1,13 @@
-package com.example.weatherapp
+package com.example.weatherapp.Model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class OneDayInfo(
+data class OneDayInfoResponse(
     var nameCity: String,
     var nameDay: String,
-    var stateWeather: Int,
+    var stateWeather: String,
     var minTemperature: Int,
     val maxTemperature: Int,
     var temperature: Int,
@@ -15,5 +15,3 @@ data class OneDayInfo(
     var humidity: Int,
     var areaRain: Int
 ) : Parcelable
-
-

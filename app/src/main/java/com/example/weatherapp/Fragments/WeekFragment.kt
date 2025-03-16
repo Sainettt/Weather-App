@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.Adapters.WeekDaysAdapter
 import com.example.weatherapp.Interfaces.OnDayClickListener
-import com.example.weatherapp.OneDayInfo
+import com.example.weatherapp.Model.OneDayInfo
 import com.example.weatherapp.R
 import com.example.weatherapp.ViewModel.WeatherViewModel
 import com.example.weatherapp.databinding.FragmentWeekInfoBinding
@@ -52,7 +52,7 @@ class WeekFragment: Fragment() {
         binding.recyclerViewWeekInfo.adapter = adapter
 
         observeWeather()
-        viewModel.fetchWeather(requireContext()) // Загружаем данные
+        viewModel.fetchWeather() // Загружаем данные
     }
 
     private fun observeWeather() {

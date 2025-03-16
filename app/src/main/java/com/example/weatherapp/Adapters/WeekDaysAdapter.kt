@@ -1,12 +1,11 @@
 package com.example.weatherapp.Adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.Interfaces.OnDayClickListener
-import com.example.weatherapp.OneDayInfo
+import com.example.weatherapp.Model.OneDayInfo
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.LayoutOneDayBinding
 
